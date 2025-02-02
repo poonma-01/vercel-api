@@ -24,3 +24,7 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header('Access-Control-Allow-Origin', '*')  # Enable CORS
         self.end_headers()
         self.wfile.write(json.dumps({"marks": marks}).encode())
+
+# Vercel requires this named export
+def app(request):
+    return Handler()
